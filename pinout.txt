@@ -1,0 +1,13 @@
+Chip: SN8P2501BP 
+
+pin 14 - H PWR
+pin 13 - M PWR 
+pin 12 - L PWR
+pin 11 - GND
+pin 10 - Level 2 BTN
+pin 9 - Level 3 BTN
+pin 8 - Level 4 BTN
+pin 4 - VCC
+pin 3 - POWER BTN
+pin 2 - Level 1 BTN
+pin 1 - LL PWR
