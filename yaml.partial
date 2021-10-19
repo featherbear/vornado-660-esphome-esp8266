@@ -1,0 +1,85 @@
+
+switch:
+  - platform: gpio
+    id: fan_PWR
+    pin:
+      number: D0
+      inverted: true
+    name: "Fan Power"
+    on_turn_on:
+      - delay: 250ms
+      - switch.turn_off: fan_PWR
+  - platform: gpio
+    id: fan_speed_1
+    interlock: &interlock_group [fan_speed_4, fan_speed_3, fan_speed_2, fan_speed_1]
+    pin:
+      number: D5
+      inverted: true
+    name: "Fan 1"
+    on_turn_on:
+      - delay: 250ms
+      - switch.turn_off: fan_speed_1
+  - platform: gpio
+    id: fan_speed_2
+    interlock: *interlock_group
+    pin:
+      number: D6
+      inverted: true
+    name: "Fan 2"
+    on_turn_on:
+      - delay: 250ms
+      - switch.turn_off: fan_speed_2
+  - platform: gpio
+    id: fan_speed_3
+    interlock: *interlock_group
+    pin:
+      number: D7
+      inverted: true
+    name: "Fan 3"
+    on_turn_on:
+      - delay: 250ms
+      - switch.turn_off: fan_speed_3
+  - platform: gpio
+    id: fan_speed_4
+    interlock: *interlock_group
+    pin:
+      number: D8
+      inverted: true
+    name: "Fan 4"
+    on_turn_on:
+      - delay: 250ms
+      - switch.turn_off: fan_speed_4
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      number: D1
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Fan Speed 1"
+    filters:
+      - delayed_on: 10ms
+  - platform: gpio
+    pin:
+      number: D2
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Fan Speed 2"
+    filters:
+      - delayed_on: 10ms
+  - platform: gpio
+    pin:
+      number: D3
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Fan Speed 3"
+    filters:
+      - delayed_on: 10ms
+  - platform: gpio
+    pin:
+      number: D4
+      mode: INPUT_PULLUP
+      inverted: True
+    name: "Fan Speed 4"
+    filters:
+      - delayed_on: 10ms
