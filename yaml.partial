@@ -9,6 +9,8 @@ switch:
     on_turn_on:
       - delay: 250ms
       - switch.turn_off: fan_PWR
+      - delay: 250ms
+      - switch.turn_on: fan_speed_1
   - platform: gpio
     id: fan_speed_1
     interlock: &interlock_group [fan_speed_4, fan_speed_3, fan_speed_2, fan_speed_1]
@@ -43,7 +45,7 @@ switch:
     id: fan_speed_4
     interlock: *interlock_group
     pin:
-      number: D8
+      number: TX
       inverted: true
     name: "Fan 4"
     on_turn_on:
